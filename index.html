@@ -7,24 +7,23 @@
     <style>
         body {
             display: flex;
-            align-items: center;
             justify-content: center;
+            align-items: center;
             height: 100vh;
             margin: 0;
         }
-        #copyMessage {
-            display: none;
-            background: rgba(0, 0, 0, 0.8);
-            color: #fff;
-            padding: 10px;
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
             border-radius: 5px;
         }
     </style>
     <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            copyToClipboard();
-        });
-
         function copyToClipboard() {
             var textToCopy = "Hello, this is the text to be copied!";
             var tempInput = document.createElement("input");
@@ -34,20 +33,11 @@
             tempInput.setSelectionRange(0, 99999);
             document.execCommand("copy");
             document.body.removeChild(tempInput);
-
-            showCopyMessage();
-        }
-
-        function showCopyMessage() {
-            var copyMessage = document.getElementById("copyMessage");
-            copyMessage.style.display = "block";
-            setTimeout(function() {
-                copyMessage.style.display = "none";
-            }, 2000); // Display for 2 seconds
+            alert("Text copied to clipboard: " + textToCopy);
         }
     </script>
 </head>
 <body>
-    <div id="copyMessage">Copied to clipboard!</div>
+    <button onclick="copyToClipboard()">Copy Text to Clipboard</button>
 </body>
 </html>
